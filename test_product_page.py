@@ -1,6 +1,7 @@
 import pytest
 from pages.product_page import ProductPage
 from pages.login_page import LoginPage
+from pages.basket_page import BasketPage
 import time
 
 
@@ -44,7 +45,20 @@ def test_check_product(browser, links):
     page.price_check()
     time.sleep(10)
 
+
+
 @pytest.mark.need_review
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_product_page()
+    page = BasketPage(browser,link)
+    page.go_to_basket_page()
+    page.should_be_empty()
+    page.should_be_empty_text()
+
+
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/"
     page = ProductPage(browser, link)

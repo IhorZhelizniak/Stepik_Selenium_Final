@@ -30,3 +30,10 @@ class BasePageLocators():
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
+class BasketPageLocators():
+    BASKET_BUTTON = (By.XPATH, "//span/a[@class='btn btn-default']")
+    EMPTY_BASKET = (By.ID, "id_form-0-id")
+    EMPTY_BASKET_TEXT = (By.CSS_SELECTOR, "#content_inner p")
+
+
+
